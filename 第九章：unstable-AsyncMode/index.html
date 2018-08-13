@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://didi-amc.github.io/ReactAnalysis">
-  <title>前言 | 从源码学习React.JS</title>
+  <title>第九章：unstable_AsyncMode | 从源码学习React.JS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎阅读《从源码学习React.JS》本书将从React.js的源码进行剖析，通过React的入口层层深入，分步解读React包含的各种类及功能，从而了解React全部功能以及设计思路；本书编写组由滴滴出行的AMCFE前端团队组成，团队一直在优秀框架上进行调研以及独立开发。 React.JS起源于Facebook，原为Instagram的内部应用框架，后受到内部工程师好评，于是在2013.5进行开">
+  <meta name="description" content="从React源码深入了解React.js">
 <meta name="keywords" content="React">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前言">
-<meta property="og:url" content="https://didi-amc.github.io/ReactAnalysis/hello-world/index.html">
+<meta property="og:title" content="第九章：unstable_AsyncMode">
+<meta property="og:url" content="https://didi-amc.github.io/ReactAnalysis/第九章：unstable-AsyncMode/index.html">
 <meta property="og:site_name" content="从源码学习React.JS">
-<meta property="og:description" content="欢迎阅读《从源码学习React.JS》本书将从React.js的源码进行剖析，通过React的入口层层深入，分步解读React包含的各种类及功能，从而了解React全部功能以及设计思路；本书编写组由滴滴出行的AMCFE前端团队组成，团队一直在优秀框架上进行调研以及独立开发。 React.JS起源于Facebook，原为Instagram的内部应用框架，后受到内部工程师好评，于是在2013.5进行开">
+<meta property="og:description" content="从React源码深入了解React.js">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2018-08-13T09:15:50.794Z">
+<meta property="og:updated_time" content="2018-08-13T10:12:54.736Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前言">
-<meta name="twitter:description" content="欢迎阅读《从源码学习React.JS》本书将从React.js的源码进行剖析，通过React的入口层层深入，分步解读React包含的各种类及功能，从而了解React全部功能以及设计思路；本书编写组由滴滴出行的AMCFE前端团队组成，团队一直在优秀框架上进行调研以及独立开发。 React.JS起源于Facebook，原为Instagram的内部应用框架，后受到内部工程师好评，于是在2013.5进行开">
+<meta name="twitter:title" content="第九章：unstable_AsyncMode">
+<meta name="twitter:description" content="从React源码深入了解React.js">
   
     <link rel="alternative" href="/atom.xml" title="从源码学习React.JS" type="application/atom+xml">
   
@@ -265,36 +265,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-第九章：unstable-AsyncMode" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      前言
+      第九章：unstable_AsyncMode
     </h1>
   
 
         
         <a href="" class="archive-article-date">
-  	<time datetime="2018-08-13T06:49:47.828Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-13</time>
+  	<time datetime="2018-08-13T10:12:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="欢迎阅读《从源码学习React-JS》"><a href="#欢迎阅读《从源码学习React-JS》" class="headerlink" title="欢迎阅读《从源码学习React.JS》"></a>欢迎阅读《从源码学习React.JS》</h3><p>本书将从React.js的源码进行剖析，通过React的入口层层深入，分步解读React包含的各种类及功能，从而了解React全部功能以及设计思路；本书编写组由滴滴出行的AMCFE前端团队组成，团队一直在优秀框架上进行调研以及独立开发。</p>
-<p>React.JS起源于Facebook，原为Instagram的内部应用框架，后受到内部工程师好评，于是在2013.5进行开源；如今React已经成为前端应用框架的领头羊。各大企业纷纷将代码进行升级或迁移，React相关的效率提升技术也如星火燎原之势发展起来，如Redux、Saga、React-Router、React-thunk等。</p>
-<h3 id="本书的特点："><a href="#本书的特点：" class="headerlink" title="本书的特点："></a>本书的特点：</h3><ul>
-<li>从代码角度剖析React的功能，掌握React不为人知的作用</li>
-<li>了解React的设计思路，练就大师级编程技巧</li>
-<li>从React的分析中了解更多前端知识</li>
-<li>由滴滴出行一线高工进行编写，更加符合工程师思路</li>
-</ul>
-<p>下面开始进入React的源码世界！！！</p>
-
+        
       
 
       
@@ -373,7 +364,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://didi-amc.github.io/ReactAnalysis/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://didi-amc.github.io/ReactAnalysis/第九章：unstable-AsyncMode/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -387,15 +378,20 @@
   
 <nav id="article-nav">
   
-    <a href="../初章：React-js入口/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../第十章：unstable-Profiler/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          初章：React.js入口
+          第十章：unstable_Profiler
         
       </div>
     </a>
   
+  
+    <a href="../第八章：StrictMode/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第八章：StrictMode</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
